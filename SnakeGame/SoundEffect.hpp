@@ -1,15 +1,14 @@
 #pragma once
 #include"Defination.hpp"
 #include"SFML/Audio.hpp"
-#include"Game.hpp"
 
 class SoundEffect
 {
 public:
-	SoundEffect(GameDataRef data);
+	SoundEffect();
 	~SoundEffect();
 	void playEatingSound();
 private:
-	GameDataRef data;
+	sf::SoundBuffer eatingSound_bu;
 	sf::Sound eatingSound;
 };

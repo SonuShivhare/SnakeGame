@@ -9,7 +9,7 @@ const int window_Width = xCount * size;
 const int window_Height = yCount * size;
 
 #define Game_Title "Assets/images/SnakeGameTitle.png"
-#define Snake_Game_Title_Speed 0.4
+#define Snake_Speed 0.1f
 //sf::IntRect game_Title_Partition(sf::IntRect(0, 0, 900, 126));
 
 #define Main_Manu_Play_Button "Assets/images/StartButton07.png"
@@ -29,6 +29,9 @@ const int window_Height = yCount * size;
 
 #define Main_Menu_Background "Assets/images/MainManuBackground01.png"
 #define Level1_Background "Assets/images/Grass06.png"
+#define Level_01_Wall_Border_FilePath "Assets/images/Wall01.png"
+#define Level_02_Wall_Border_FilePath "Assets/images/Wall02.png"
+#define Level_03_Wall_Border_FilePath "Assets/images/Wall03.png"
 #define GameOver_Background "Assets/images/GameOverBackground.png"
 #define Common_Background "Assets/images/background.png"
 

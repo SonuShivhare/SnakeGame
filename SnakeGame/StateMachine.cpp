@@ -2,6 +2,9 @@
 
 StateMachine::StateMachine()
 {
+	isAdding = false;
+	isRemoving = false;
+	isReplacing = true;
 }
 
 StateMachine::~StateMachine()

@@ -9,6 +9,7 @@ class AssetsManager
 public:
 	AssetsManager();
 	~AssetsManager();
+
 	void loadTexture(std::string name, std::string fileName);
 	sf::Texture& getTexture(std::string name);
 

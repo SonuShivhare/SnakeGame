@@ -1,16 +1,14 @@
 #include "Game.hpp"
 #include"MainMenuState.hpp"
-#include"Food.hpp"
-#include"Snake.hpp"
+#include "SoundEffect.hpp"
 
 Game::Game()
 {
-	data->window.create(sf::VideoMode(window_Width, window_Height), "-Snake Game-");
-	data->window.setFramerateLimit(60);
-	//switch to Starting State
-	data->machine.addState(stateRef(new MainMenuState(this->data)));
+	this->data->window.create(sf::VideoMode(window_Width, window_Height), "-Snake Game-");
+	this->data->window.setFramerateLimit(60);
 
-	//new Food(this->data);
+	//switch to Starting State
+	this->data->machine.addState(stateRef(new MainMenuState(this->data)));
 
 	this->run();
 }

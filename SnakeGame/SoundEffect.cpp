@@ -1,8 +1,9 @@
 #include "SoundEffect.hpp"
 
-SoundEffect::SoundEffect(GameDataRef data) : data(data)
+SoundEffect::SoundEffect()
 {
-	this->data->assets.loadSound("eatingSonud", Eating_Sound_FilePath);
+	eatingSound_bu.loadFromFile(Eating_Sound_FilePath);
+	eatingSound.setBuffer(eatingSound_bu);
 }
 
 SoundEffect::~SoundEffect()
@@ -11,6 +12,5 @@ SoundEffect::~SoundEffect()
 
 void SoundEffect::playEatingSound()
 {
-	eatingSound.setBuffer(this->data->assets.getSound("eatingSonud"));
 	eatingSound.play();
 }

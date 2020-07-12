@@ -1,19 +1,33 @@
 #include "Snake.hpp"
 
-Snake::Snake(GameDataRef data) : data(data), audio(data)
+Snake::Snake(GameDataRef data) : data(data)//, audio(data)
 {
-	this->data->assets.loadTexture("snakeBody", Snake_Segment_FilePath);
-
 	snakeBody.setTexture(this->data->assets.getTexture("snakeBody"));
 	snakeBody.setTextureRect(Snake_Body);
+
 	scoreText.setFont(this->data->assets.getFont("font"));
 	scoreText.setCharacterSize(30);
 
 	snakeDirection = 4;
 	snakeLength = 4;
-	s[0].x = 0;
-	s[0].y = 0;
+	s[0].x = 1;
+	s[0].y = 1;
 	score = 0;
+}
+
+Snake::Snake(GameDataRef data, int score) : data(data)
+{
+	snakeBody.setTexture(this->data->assets.getTexture("snakeBody"));
+	snakeBody.setTextureRect(Snake_Body);
+
+	scoreText.setFont(this->data->assets.getFont("font"));
+	scoreText.setCharacterSize(30);
+
+	snakeDirection = 4;
+	this->snakeLength = 4;
+	this->score = score;
+	s[0].x = 1;
+	s[0].y = 1;
 }
 
 Snake::~Snake()
@@ -72,18 +86,18 @@ void Snake::snakeMovementDirection()
 	}
 }
 
-//Score mechanic
-/*void Snake::scoreFunc()
+bool Snake::snakeFoodCollision(sf::Vector2f f)
 {
-	scoreText.setString("Score : " + std::to_string(score));
-	scoreText.setPosition(sf::Vector2f(window_Width / 2, 4));
-	scoreText.setOrigin(sf::Vector2f(scoreText.getGlobalBounds().width / 2, scoreText.getGlobalBounds().height / 2));
-	this->data->window.draw(scoreText);
-}*/
-
-int Snake::returnScore()
-{
-	return score;
+	if (s[0].x == f.x && s[0].y == f.y)
+	{
+		//audio.playEatingSound();
+		this->data->soundEffect.playEatingSound();
+		score += 10;
+		snakeLength ++;
+		highScore.storePlayerScore(score);
+		return true;
+	}
+	return false;
 }
 
 void Snake::snakeWallCross()
@@ -94,31 +108,25 @@ void Snake::snakeWallCross()
 	if (s[0].y >= yCount) s[0].y = 0;
 }
 
-bool Snake::snakeFoodCollision(sf::Vector2f f)
+bool Snake::snakeWallCollision()
 {
-	if (s[0].x == f.x && s[0].y == f.y)
+	if (s[0].x < 1 || s[0].y < 1) return true;
+	if (s[0].x >= xCount - 1 || s[0].y >= yCount - 1) return true;
+	return false;
+}
+
+bool Snake::snakeItselfCollision()
+{
+	for (int i = 1; i < snakeLength; i++)
 	{
-		audio.playEatingSound();
-		score += 10;
-		snakeLength ++;
-		highScore.storePlayerScore(score);
-		return true;
+		if (s[0].x == s[i].x && s[0].y == s[i].y) return true ;
 	}
 	return false;
 }
 
-void Snake::snakeWallCollision(int& gameLevel)
+int Snake::returnScore()
 {
-	if (s[0].x < 0 || s[0].y < 0) gameLevel = 3;
-	if (s[0].x >= xCount || s[0].y >= yCount) gameLevel = 3;
-}
-
-void Snake::snakeItselfCollision(int& gameLevel)
-{
-	for (int i = 1; i < snakeLength; i++)
-	{
-		if (s[0].x == s[i].x && s[0].y == s[i].y) gameLevel = 3;
-	}
+	return score;
 }
 
 void Snake::render()

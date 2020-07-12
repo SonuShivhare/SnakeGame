@@ -1,10 +1,10 @@
 #pragma once
 #include <memory>
-#include <string>
 #include <SFML/Graphics.hpp>
 #include "StateMachine.hpp"
 #include "AssetsManager.hpp"
 #include "InputManager.hpp"
+#include"SoundEffect.hpp"
 
 struct GameData
 {
@@ -12,6 +12,7 @@ struct GameData
 	sf::RenderWindow window;
 	AssetsManager assets;
 	InputManager input;
+	SoundEffect soundEffect;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;

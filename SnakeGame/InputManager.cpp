@@ -21,16 +21,7 @@ bool InputManager::isSpriteClicked(sf::Sprite sprite, sf::Mouse::Button button, 
 	return false;
 }
 
-bool InputManager::isMouseButtonReleased(sf::RenderWindow& window)
-{
-	std::cout << "inFunction" << std::endl;
-	sf::Event event;
-	window.pollEvent(event);
-		std::cout << "inWhile" << std::endl;
-		return (event.type == sf::Event::MouseButtonReleased);
-}
-
-sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& window)
+/*sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& window)
 {
 	return sf::Mouse::getPosition(window);
-}
+}*/

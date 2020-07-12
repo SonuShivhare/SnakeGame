@@ -11,8 +11,6 @@ GameOverState::~GameOverState()
 
 void GameOverState::init()
 {
-	data->assets.loadTexture("gameOverBackground", GameOver_Background);
-	background.setTexture(this->data->assets.getTexture("gameOverBackground"));
 
 	homeButton.setTexture(data->assets.getTexture("homeButton"));
 	homeButton.setTextureRect(Green_button);
@@ -39,6 +37,8 @@ void GameOverState::init()
 	currentScore.setString("Your Score\n\t\t" + std::to_string(highScore.returnPlayerScore()));
 	currentScore.setPosition(sf::Vector2f(window_Width / 3.3, window_Height / 2.6));
 	currentScore.setOrigin(sf::Vector2f(currentScore.getGlobalBounds().width / 2, currentScore.getGlobalBounds().height / 2));
+
+	background.setTexture(this->data->assets.getTexture("gameOverBackground"));
 
 	highScore.compareScore();
 

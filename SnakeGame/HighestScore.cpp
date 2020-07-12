@@ -2,49 +2,10 @@
 
 HighestScore::HighestScore()
 {
-	//openFile();
-	//closeFile();
 }
 
 HighestScore::~HighestScore()
 {
-}
-
-void HighestScore::openFile()
-{
-	in_file_HighScore.open("Assets/Score/HighestScore.txt");
-	if (!in_file_HighScore.is_open())
-	{
-		std::cout << "Error While Opening Highest Score File..." << std::endl;
-	}
-	in_file_HighScore >> highScore;
-
-	in_file_PlayerScore.open("Assets/Score/PlayerScore.txt");
-	if (!in_file_PlayerScore.is_open())
-	{
-		std::cout << "Error While Opening Player Score File..." << std::endl;
-	}
-	in_file_PlayerScore >> playerScore;
-
-	out_file_HighScore.open("Assets/Score/HighestScore.txt");
-	if (!out_file_HighScore.is_open())
-	{
-		std::cout << "Error While Opening Highest Score File..." << std::endl;
-	}
-
-	out_file_PlayerScore.open("Assets/Score/PlayerScore.txt");
-	if (!out_file_PlayerScore.is_open())
-	{
-		std::cout << "Error While Opening Player Score File..." << std::endl;
-	}
-}
-
-void HighestScore::closeFile()
-{
-	in_file_HighScore.close();
-	in_file_PlayerScore.close();
-	out_file_HighScore.close();
-	out_file_PlayerScore.close();
 }
 
 void HighestScore::storePlayerScore(int playerCurrentScore)
@@ -86,4 +47,8 @@ void HighestScore::compareScore()
 		out_file_HighScore << playerScore << std::endl;
 		out_file_HighScore.close();
 	}
+
+	out_file_PlayerScore.open("Assets/Score/PlayerScore.txt");
+	out_file_PlayerScore << 0 << std::endl;
+	out_file_PlayerScore.close();
 }

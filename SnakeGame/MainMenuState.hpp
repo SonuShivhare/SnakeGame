@@ -2,7 +2,6 @@
 #include"Defination.hpp"
 #include"State.hpp"
 #include"Game.hpp"
-#include"Level1.hpp"
 
 
 
@@ -10,7 +9,9 @@ class MainMenuState : public State
 {
 public:
 	MainMenuState(GameDataRef data);
-	~MainMenuState(); 
+	~MainMenuState();
+
+	void loadFiles();
 
 	void init() override;
 	void handleInput() override;
@@ -22,9 +23,5 @@ private:
 	sf::Sprite playButton;
 	sf::Sprite quitButton;
 	sf::Sprite title;
-	sf::IntRect gameTitlePartition;
-	sf::Clock clk;
-	float timer;
-	float delay;
 };
 

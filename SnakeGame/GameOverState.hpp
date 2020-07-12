@@ -16,11 +16,11 @@ public:
 	void draw() override;
 private:
 	GameDataRef data;
+	HighestScore highScore;
 	sf::Sprite background;
 	sf::Sprite homeButton;
 	sf::Sprite quitButton;
 	sf::Text highestScore;
 	sf::Text currentScore;
-	HighestScore highScore;
 	bool isMouseButtonReleased;
 };

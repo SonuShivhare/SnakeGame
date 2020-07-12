@@ -1,7 +1,7 @@
 #pragma once
 #include"Defination.hpp"
 #include"Game.hpp"
-#include"SoundEffect.hpp"
+//#include"SoundEffect.hpp"
 #include"HighestScore.hpp"
 
 struct SnakeArray
@@ -14,22 +14,20 @@ class Snake
 {
 public:
 	Snake(GameDataRef data);
+	Snake(GameDataRef data, int score);
 	~Snake();
 	void snakeMovementDirection();
-	//void scoreFunc();
-	int returnScore();
-	void snakeWallCross();
 	bool snakeFoodCollision(sf::Vector2f f);
-	void snakeWallCollision(int& gameLevel);
-	void snakeItselfCollision(int& gameLevel);
+	void snakeWallCross();
+	bool snakeWallCollision();
+	bool snakeItselfCollision();
+	int  returnScore();
 	void render();
 private:
 	GameDataRef data;
 	HighestScore highScore;
-
-	SoundEffect audio;
+	//SoundEffect audio;
 	sf::Sprite snakeBody;
-	sf::Sprite background;
 	sf::Text scoreText;
 	SnakeArray s[500];
 	int snakeLength;

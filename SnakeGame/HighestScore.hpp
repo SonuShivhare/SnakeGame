@@ -6,8 +6,6 @@ class HighestScore
 public:
 	HighestScore();
 	~HighestScore();
-	void openFile();
-	void closeFile();
 	void storePlayerScore(int currentScore);
 	int returnHighestScore();
 	int returnPlayerScore();

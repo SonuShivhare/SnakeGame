@@ -5,11 +5,11 @@
 #include"Snake.hpp"
 #include"Food.hpp"
 
-class Level1 : public State
+class Level_01 : public State
 {
 public:
-	Level1(GameDataRef data);
-	~Level1();
+	Level_01(GameDataRef data);
+	~Level_01();
 
 	void init() override;
 	void handleInput() override;
@@ -18,9 +18,9 @@ public:
 private:
 	GameDataRef data;
 	Snake snake;
-
 	Food food;
 	sf::Sprite background;
+	sf::Sprite background02;
 	sf::Sprite pauseButton;
 	sf::Clock clk;
 	float timer;
