@@ -1,18 +1,18 @@
 #include "Snake.hpp"
 
-Snake::Snake()
+Snake::Snake(GameDataRef data) : data(data), audio(data)
 {
-	snakeBody_t.loadFromFile("Assets/images/red.png");
-	snakeBody.setTexture(snakeBody_t);
+	this->data->assets.loadTexture("snakeBody", Snake_Segment_FilePath);
+
+	snakeBody.setTexture(this->data->assets.getTexture("snakeBody"));
+	snakeBody.setTextureRect(Snake_Body);
+	scoreText.setFont(this->data->assets.getFont("font"));
+	scoreText.setCharacterSize(30);
+
 	snakeDirection = 4;
 	snakeLength = 4;
 	s[0].x = 0;
 	s[0].y = 0;
-
-	//Related Score mechanic
-	font.loadFromFile("C:/Windows/Fonts/arial.ttf");
-	scoreText.setFont(font);
-	scoreText.setCharacterSize(30);
 	score = 0;
 }
 
@@ -20,7 +20,7 @@ Snake::~Snake()
 {
 }
 
-void Snake::snakeMovement(float dt)
+void Snake::snakeMovementDirection()
 {
 	//Switching Snake segments in array
 	for (int i = snakeLength; i > 0; i--)
@@ -56,54 +56,64 @@ void Snake::snakeMovement(float dt)
 	{
 	case 1: s[0].x += 0;
 			s[0].y += -1;
-			break;
+		break;
 
 	case 2: s[0].x += 0;
 			s[0].y += 1;
-			break;
+		break;
 
 	case 3: s[0].x += -1;
-			s[0].y += 0 ;
-			break;
+			s[0].y += 0;
+		break;
 
 	case 4: s[0].x += 1;
 			s[0].y += 0;
-			break;
+		break;
 	}
 }
 
 //Score mechanic
-void Snake::scoreFunc(sf::RenderWindow& window)
+/*void Snake::scoreFunc()
 {
 	scoreText.setString("Score : " + std::to_string(score));
-	scoreText.setPosition(sf::Vector2f(windowWidth / 2, 4));
+	scoreText.setPosition(sf::Vector2f(window_Width / 2, 4));
 	scoreText.setOrigin(sf::Vector2f(scoreText.getGlobalBounds().width / 2, scoreText.getGlobalBounds().height / 2));
-	window.draw(scoreText);
-}
+	this->data->window.draw(scoreText);
+}*/
 
-int Snake::scoreReturn()
+int Snake::returnScore()
 {
 	return score;
+}
+
+void Snake::snakeWallCross()
+{
+	if (s[0].x < 0) s[0].x = xCount - 1;
+	if (s[0].y < 0) s[0].y = yCount - 1;
+	if (s[0].x >= xCount) s[0].x = 0;
+	if (s[0].y >= yCount) s[0].y = 0;
 }
 
 bool Snake::snakeFoodCollision(sf::Vector2f f)
 {
 	if (s[0].x == f.x && s[0].y == f.y)
 	{
-		score += 1;
-		snakeLength++;
+		audio.playEatingSound();
+		score += 10;
+		snakeLength ++;
+		highScore.storePlayerScore(score);
 		return true;
 	}
 	return false;
 }
 
-void Snake::snakeWallCollision(sf::RenderWindow& window, int& gameLevel)
+void Snake::snakeWallCollision(int& gameLevel)
 {
 	if (s[0].x < 0 || s[0].y < 0) gameLevel = 3;
 	if (s[0].x >= xCount || s[0].y >= yCount) gameLevel = 3;
 }
 
-void Snake::snakeItselfCollision(sf::RenderWindow& window, int& gameLevel)
+void Snake::snakeItselfCollision(int& gameLevel)
 {
 	for (int i = 1; i < snakeLength; i++)
 	{
@@ -111,11 +121,16 @@ void Snake::snakeItselfCollision(sf::RenderWindow& window, int& gameLevel)
 	}
 }
 
-void Snake::render(sf::RenderWindow& window)
+void Snake::render()
 {
 	for (int i = 0; i < snakeLength; i++)
 	{
 		snakeBody.setPosition(sf::Vector2f(s[i].x * size, s[i].y * size));
-		window.draw(snakeBody);
-	}	
+		this->data->window.draw(snakeBody);
+	}
+
+	scoreText.setString("Score : " + std::to_string(score));
+	scoreText.setPosition(sf::Vector2f(window_Width / 2, 4));
+	scoreText.setOrigin(sf::Vector2f(scoreText.getGlobalBounds().width / 2, scoreText.getGlobalBounds().height / 2));
+	this->data->window.draw(scoreText);
 }

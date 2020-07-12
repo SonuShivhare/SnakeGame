@@ -1,5 +1,6 @@
 #pragma once
-#include "Defs.hpp"
+#include"Defination.hpp"
+#include"Game.hpp"
 
 struct foodArray
 {
@@ -10,14 +11,15 @@ struct foodArray
 class Food
 {
 public:
-	Food();
+	Food(GameDataRef data);
 	~Food();
-	void foodGen();
+
 	sf::Vector2f foodPos();
-	void render(sf::RenderWindow& window);
+	void foodGen();	
+	void render();
 private:
-	sf::Texture food_t;
-	sf::Sprite food;
+	GameDataRef data;
 	foodArray f;
+	sf::Sprite food;	
 };
 
