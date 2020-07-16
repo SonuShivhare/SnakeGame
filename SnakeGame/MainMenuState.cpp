@@ -1,37 +1,14 @@
 #include "MainMenuState.hpp"
 #include"Level_01.hpp"
 #include"Level_02.hpp"
+#include"SplashScreen.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) : data(data)
 {
-	loadFiles();
 }
 
 MainMenuState::~MainMenuState()
 {
-}
-
-void MainMenuState::loadFiles()
-{
-	data->assets.loadTexture("title", Game_Title);
-	data->assets.loadTexture("playButton", Play_Button);
-	data->assets.loadTexture("homeButton", Home_Button);
-	data->assets.loadTexture("quitButton", Quit_Button);
-	this->data->assets.loadTexture("food", Food_FilePath);
-	data->assets.loadTexture("background", Common_Background); 
-	data->assets.loadTexture("level_01_WallBorder", Level_01_Wall_Border_FilePath);
-	data->assets.loadTexture("level_02_WallBorder", Level_02_Wall_Border_FilePath);
-	data->assets.loadTexture("level_03_WallBorder", Level_03_Wall_Border_FilePath);
-	data->assets.loadTexture("mainMenuPlayButton", Main_Manu_Play_Button);
-	data->assets.loadTexture("mainMenuQlayButton", Main_Manu_Quit_Button);
-	data->assets.loadTexture("mainMenuBackground", Main_Menu_Background);
-	this->data->assets.loadFont("font", Font_FilePath);
-	this->data->assets.loadFont("arialfont", Arial_Font_FilePath);
-	this->data->assets.loadTexture("snakeBody", Snake_Segment_FilePath);
-	//this->data->assets.loadSound("eatingSound", Eating_Sound_FilePath);
-	data->assets.loadTexture("level_01_Background", Level1_Background);
-	data->assets.loadTexture("pauseButton", Pause_Button);
-	data->assets.loadTexture("gameOverBackground", GameOver_Background);
 }
 
 void MainMenuState::init()
@@ -62,7 +39,9 @@ void MainMenuState::handleInput()
 		if (this->data->input.isSpriteClicked(playButton, sf::Mouse::Left, this->data->window))
 		{
 			//Switch to Level_01
-			this->data->machine.addState(stateRef(new Level_01(this->data)));
+			this->data->machine.addState(stateRef(new SplashScreen(this->data, 1)));
+			//this->data->machine.addState(stateRef(new SplashScreen(this->data, 0)));
+			//this->data->machine.addState(stateRef(new Level_01(this->data)));
 			//this->data->machine.addState(stateRef(new Level_02(this->data)));
 			//this->data->machine.addState(stateRef(new GameOverState(this->data)));
 		}

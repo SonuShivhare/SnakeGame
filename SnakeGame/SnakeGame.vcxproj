@@ -182,6 +182,7 @@
     <ClInclude Include="PauseState.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Snake.hpp" />
+    <ClInclude Include="SplashScreen.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
   </ItemGroup>
@@ -200,6 +201,7 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

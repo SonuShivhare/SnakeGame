@@ -11,7 +11,6 @@ GameOverState::~GameOverState()
 
 void GameOverState::init()
 {
-
 	homeButton.setTexture(data->assets.getTexture("homeButton"));
 	homeButton.setTextureRect(Green_button);
 	homeButton.setPosition(window_Width / 1.6, window_Height / 1.2);
@@ -27,7 +26,7 @@ void GameOverState::init()
 	highestScore.setFillColor(sf::Color::Black);
 	highestScore.Bold;
 	highestScore.setCharacterSize(45);
-	highestScore.setString("High Score\n\t\t" + std::to_string(highScore.returnHighestScore()));
+	highestScore.setString("High Score\n\t  " + std::to_string(highScore.returnHighestScore()));
 	highestScore.setPosition(sf::Vector2f(window_Width / 1.35, window_Height / 2.5));
 	highestScore.setOrigin(sf::Vector2f(highestScore.getGlobalBounds().width / 2, highestScore.getGlobalBounds().height / 2));
 

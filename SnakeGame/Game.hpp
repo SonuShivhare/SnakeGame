@@ -22,6 +22,8 @@ class Game
 public:
 	Game();
 	~Game();
+
+	void loadFiles();
 	
 private:
 	GameDataRef data = std::make_shared<GameData>();

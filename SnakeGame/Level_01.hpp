@@ -20,10 +20,13 @@ private:
 	Snake snake;
 	Food food;
 	sf::Sprite background;
-	sf::Sprite background02;
+	sf::Sprite backgroundWall;
 	sf::Sprite pauseButton;
 	sf::Clock clk;
+	float timePerFrame;
 	float timer;
 	float delay;
+	float BounusFoodTimer;
+	float BounsFoodDelay;
 	bool isMouseButtonReleased;
 };

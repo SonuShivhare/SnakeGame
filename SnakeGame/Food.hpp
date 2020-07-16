@@ -8,6 +8,12 @@ struct foodArray
 	int y;
 };
 
+struct bonusFood
+{
+	int x;
+	int y;
+};
+
 class Food
 {
 public:
@@ -15,11 +21,16 @@ public:
 	~Food();
 
 	sf::Vector2f foodPos();
-	void foodGen();	
+	sf::Vector2f bonusFoodPos();
+	void bonusFoodDisappear();
+	void foodGen();
+	void bonusFoodGen();
 	void render();
 private:
 	GameDataRef data;
 	foodArray f;
-	sf::Sprite food;	
+	bonusFood bf;
+	sf::Sprite food;
+	sf::Sprite bonusFood;
 };
 

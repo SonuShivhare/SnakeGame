@@ -11,8 +11,6 @@ public:
 	MainMenuState(GameDataRef data);
 	~MainMenuState();
 
-	void loadFiles();
-
 	void init() override;
 	void handleInput() override;
 	void update() override;
