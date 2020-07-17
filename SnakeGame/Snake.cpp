@@ -209,7 +209,7 @@ int Snake::returnScore()
 
 void Snake::snakeAnimation()
 {
-	for (int i = 0; i < snakeLength; i++)
+	for (int i = 0; i < snakeLength ; i++)
 	{
 
 		if (i == 0)

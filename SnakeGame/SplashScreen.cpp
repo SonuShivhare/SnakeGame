@@ -8,47 +8,42 @@ SplashScreen::SplashScreen(GameDataRef data, int splashScreen, float delay) : da
 {
 	this->splashScreen = splashScreen;
 	this->delay = delay;
-	timer = 0.0f;
+	this->timer = 0.0f;
+	this->timer2 = 0.0f;
 }
 
 SplashScreen::~SplashScreen()
 {
 }
 
-
-
 void SplashScreen::GameStart()
 {
 	this->data->window.draw(gameStartBackground);
 	this->data->window.draw(snake_Animation);
-	//this->data->window.draw(game_Start_Text);
 }
 
 void SplashScreen::level_01()
 {
 	this->data->window.draw(level_01_Background);
-	//this->data->window.draw(level_01_Text);
 }
 
 void SplashScreen::level_02()
 {
 	this->data->window.draw(level_02_Background);
-	//this->data->window.draw(level_02_Text);
 }
 
 void SplashScreen::level_03()
 {
 	this->data->window.draw(level_03_Background);
-	//this->data->window.draw(level_03_Text);
 }
 
 void SplashScreen::init()
 {
 	gameStartBackground.setTexture(this->data->assets.getTexture("game_Start_Splash_Screen_Background"));
-	snake_Animation.setTexture(this->data->assets.getTexture("snake_Animation"));
 	level_01_Background.setTexture(this->data->assets.getTexture("level_01_Splash_Screen_Background"));
 	level_02_Background.setTexture(this->data->assets.getTexture("level_02_Splash_Screen_Background"));
 	level_03_Background.setTexture(this->data->assets.getTexture("level_03_Splash_Screen_Background"));
+	snake_Animation.setTexture(this->data->assets.getTexture("snake_Animation"));
 	
 	snake_Animation_Partition = sf::IntRect(0, 0, 701, 185);
 	snakeSlithering = sf::Vector2f(-700, window_Height / 2);
@@ -56,39 +51,9 @@ void SplashScreen::init()
 	snake_Animation.setOrigin(sf::Vector2f(0, snake_Animation.getGlobalBounds().height / 2));
 	snake_Animation.setPosition(snakeSlithering);
 
-	/*game_Start_Text.setFont(this->data->assets.getFont("font"));
-	level_01_Text.setFont(this->data->assets.getFont("font"));
-	level_02_Text.setFont(this->data->assets.getFont("font"));
-	level_03_Text.setFont(this->data->assets.getFont("font"));
-
-	game_Start_Text.setString("Welcome");
-	level_01_Text.setString("Level 1");
-	level_02_Text.setString("Level 2");
-	level_03_Text.setString("Level 3");
-
-	game_Start_Text.setCharacterSize(100);
-	level_01_Text.setCharacterSize(100);
-	level_02_Text.setCharacterSize(100);
-	level_03_Text.setCharacterSize(100);
-
-	game_Start_Text.setOrigin(sf::Vector2f(game_Start_Text.getGlobalBounds().width / 2, game_Start_Text.getGlobalBounds().height / 2));
-	level_01_Text.setOrigin(sf::Vector2f(level_01_Text.getGlobalBounds().width / 2, level_01_Text.getGlobalBounds().height / 2));
-	level_02_Text.setOrigin(sf::Vector2f(level_02_Text.getGlobalBounds().width / 2, level_02_Text.getGlobalBounds().height / 2));
-	level_03_Text.setOrigin(sf::Vector2f(level_03_Text.getGlobalBounds().width / 2, level_03_Text.getGlobalBounds().height / 2));
-
-	game_Start_Text.setFillColor(sf::Color::Black);
-	level_01_Text.setFillColor(sf::Color::Black);
-	level_02_Text.setFillColor(sf::Color::Black);
-	level_03_Text.setFillColor(sf::Color::Black);
-
-	game_Start_Text.setPosition(sf::Vector2f(window_Width / 2, window_Height / 2));
-	level_01_Text.setPosition(sf::Vector2f(window_Width / 2, window_Height / 2));
-	level_02_Text.setPosition(sf::Vector2f(window_Width / 2, window_Height / 2));
-	level_03_Text.setPosition(sf::Vector2f(window_Width / 2, window_Height / 2));*/
-
 	snakeAnimationSpeed = 0.07f;
 
-	if(splashScreen != 0) this->data->soundEffect.playLevelUpSound();
+	//if(splashScreen != 0) this->data->soundEffect.playLevelUpSound();
 }
 
 void SplashScreen::handleInput()

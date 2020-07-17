@@ -27,21 +27,16 @@ private:
 	sf::Sprite level_01_Background;
 	sf::Sprite level_02_Background;
 	sf::Sprite level_03_Background;
+
 	sf::Sprite snake_Animation;
-
 	sf::IntRect snake_Animation_Partition;
-
-	sf::Text game_Start_Text;
-	sf::Text level_01_Text;
-	sf::Text level_02_Text;
-	sf::Text level_03_Text;
 	sf::Vector2f snakeSlithering;
 
 	sf::Clock clk;
 	float timePerFrame;
 	float timer;
-	float delay;
 	float timer2;
+	float delay;
 	float snakeAnimationSpeed;
 
 	int splashScreen;

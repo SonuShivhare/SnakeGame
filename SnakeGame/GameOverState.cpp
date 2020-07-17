@@ -55,7 +55,7 @@ void GameOverState::handleInput()
 			homeButton.setTextureRect(Yellow_button);
 			isMouseButtonReleased = true;
 		}
-		else if (isMouseButtonReleased && !this->data->input.isSpriteClicked(homeButton, sf::Mouse::Left, this->data->window))
+		else if (isMouseButtonReleased)
 		{
 			//resume the game
 			isMouseButtonReleased = false;
@@ -72,7 +72,7 @@ void GameOverState::handleInput()
 			quitButton.setTextureRect(Yellow_button);
 			isMouseButtonReleased = true;
 		}
-		else if (isMouseButtonReleased && !this->data->input.isSpriteClicked(quitButton, sf::Mouse::Left, this->data->window))
+		else if (isMouseButtonReleased)
 		{
 			//resume the game
 			isMouseButtonReleased = false;

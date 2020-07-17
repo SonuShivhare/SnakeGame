@@ -28,10 +28,6 @@ void StateMachine::processStateChanges()
 	if (this->isRemoving && !states.empty())
 	{
 		this->states.pop();
-		/*if (!this->states.empty())
-		{
-			this->states.top()->resume();
-		}*/
 		this->isRemoving = false;
 	}
 
@@ -41,10 +37,6 @@ void StateMachine::processStateChanges()
 		{
 			this->states.pop();
 		}
-		/*else if (!states.empty())
-		{
-			this->states.top()->pause();
-		}*/
 		this->states.push(std::move(this->newState));
 		this->states.top()->init();
 		this->isAdding = false;

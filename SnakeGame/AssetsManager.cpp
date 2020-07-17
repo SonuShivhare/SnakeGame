@@ -43,21 +43,3 @@ sf::Font& AssetsManager::getFont(std::string name)
 {
 	return this->font.at(name);
 }
-
-void AssetsManager::loadSound(std::string name, std::string fileName)
-{
-	sf::SoundBuffer sounds;
-	if (!sounds.loadFromFile(fileName))
-	{
-		std::cout << name << "can't be loaded" << std::endl;
-	}
-	else
-	{
-		this->sound[name] = sounds;
-	}
-}
-
-sf::SoundBuffer& AssetsManager::getSound(std::string name)
-{
-	return this->sound.at(name);
-}

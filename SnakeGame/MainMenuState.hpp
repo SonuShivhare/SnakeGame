@@ -3,8 +3,6 @@
 #include"State.hpp"
 #include"Game.hpp"
 
-
-
 class MainMenuState : public State
 {
 public:

@@ -37,7 +37,7 @@ void PauseState::handleInput()
 			playButton.setTextureRect(Yellow_button);
 			isMouseButtonReleased = true;
 		}
-		else if (isMouseButtonReleased && !this->data->input.isSpriteClicked(playButton, sf::Mouse::Left, this->data->window))
+		else if (isMouseButtonReleased)
 		{
 			//resume the game
 			isMouseButtonReleased = false;
@@ -54,7 +54,7 @@ void PauseState::handleInput()
 			homeButton.setTextureRect(Yellow_button);
 			isMouseButtonReleased = true;
 		}
-		else if (isMouseButtonReleased && !this->data->input.isSpriteClicked(homeButton, sf::Mouse::Left, this->data->window))
+		else if (isMouseButtonReleased)
 		{
 			//which to main menu
 			isMouseButtonReleased = false;
