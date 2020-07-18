@@ -13,7 +13,7 @@ Level_01::~Level_01()
 
 void Level_01::init()
 {
-	background.setTexture(this->data->assets.getTexture("level_01_Background"));
+	background.setTexture(this->data->assets.getTexture("levels_background"));
 	backgroundWall.setTexture(this->data->assets.getTexture("level_01_Border"));
 
 
@@ -63,7 +63,7 @@ void Level_01::update()
 {
 	if (snake.snakeFoodCollision(food.foodPos())) food.foodGen();
 	if(snake.snakeBonusFoodCollision(food.bonusFoodPos())) food.bonusFoodDisappear();
-	if (snake.returnScore() >= 50)
+	if (snake.returnScore() >= Points_To_Enter_Level_02)
 	{
 	
 		this->data->machine.addState(stateRef(new SplashScreen(this->data, 2)));

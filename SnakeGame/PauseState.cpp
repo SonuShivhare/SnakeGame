@@ -18,8 +18,8 @@ void PauseState::init()
 	playButton.setTextureRect(Blue_button);
 	homeButton.setTextureRect(Blue_button);
 
-	playButton.setPosition(window_Width / 2, window_Height / 3);
-	homeButton.setPosition(window_Width / 2, window_Height / 1.5);
+	playButton.setPosition(window_Width / 2.2, window_Height / 3);
+	homeButton.setPosition(window_Width / 2.2, window_Height / 1.5);
 
 	playButton.setOrigin(sf::Vector2f(playButton.getGlobalBounds().width / 2, playButton.getGlobalBounds().height / 2));
 	homeButton.setOrigin(sf::Vector2f(homeButton.getGlobalBounds().width / 2, homeButton.getGlobalBounds().height / 2));

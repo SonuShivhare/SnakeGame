@@ -14,7 +14,8 @@ Level_03::~Level_03()
 
 void Level_03::init()
 {
-	background.setTexture(this->data->assets.getTexture("level_background"));
+	grassBackground.setTexture(this->data->assets.getTexture("levels_background"));
+	StoneGrassBorder.setTexture(this->data->assets.getTexture("level_03_Border"));
 
 	pauseButton.setTexture(this->data->assets.getTexture("levelPauseButton"));
 	pauseButton.setTextureRect(Level_Blue_button);
@@ -22,7 +23,7 @@ void Level_03::init()
 
 	timePerFrame = 0;
 	timer = 0.0f;
-	delay = Snake_Speed;
+	delay = Snake_Speed / 1.4;
 	BounusFoodTimer = Bonus_Food_Duration_Level_01;
 	BounsFoodDelay = Bonus_Food_Generation_Speed + Bonus_Food_Duration_Level_01;
 	isMouseButtonReleased = false;
@@ -80,9 +81,11 @@ void Level_03::update()
 void Level_03::draw()
 {
 	this->data->window.clear();
-	this->data->window.draw(background);
-	this->data->window.draw(pauseButton);
+	this->data->window.draw(grassBackground);
 	snake.render();
+	this->data->window.draw(StoneGrassBorder);
+	this->data->window.draw(pauseButton);
+	snake.renderScore();
 	food.render();
 	this->data->window.display();
 }

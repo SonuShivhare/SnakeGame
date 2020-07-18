@@ -79,12 +79,15 @@ void SplashScreen::update()
 		snake_Animation.setTextureRect(snake_Animation_Partition);
 	}
 
+	if (snakeSlithering.x > 1120 && splashScreen == 0)
+	{
+			this->data->machine.addState(stateRef(new MainMenuState(this->data)));
+	}
+
 	if (timer > delay)
 	{
 		switch (splashScreen)
 		{
-		case 0: this->data->machine.addState(stateRef(new MainMenuState(this->data)));
-			break;
 		case 1: this->data->machine.addState(stateRef(new Level_01(this->data)));
 			break;
 		case 2: this->data->machine.addState(stateRef(new Level_02(this->data, highScore.returnPlayerScore())));

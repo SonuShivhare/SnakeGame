@@ -31,14 +31,16 @@ void Game::loadFiles()
 	this->data->assets.loadTexture("food", Food_FilePath);
 	this->data->assets.loadTexture("bonusFood", Bonus_Food_FilePath);
 	this->data->assets.loadTexture("background", Common_Background);
-	this->data->assets.loadTexture("level_background", Level_Common_Background); /****/
+	this->data->assets.loadTexture("levels_background", Level_Common_Grass_Background); /****/
+	this->data->assets.loadTexture("level_01_Border", Level_01_Grass_Border_FilePath);
+	this->data->assets.loadTexture("level_02_Border", Level_02_Stone_Border_FilePath);
+	this->data->assets.loadTexture("level_03_Border", Level_03_Grass_Stone_Border_FilePath);
 	this->data->assets.loadTexture("game_Start_Splash_Screen_Background", Game_Starting_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_01_Splash_Screen_Background", Level_01_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_02_Splash_Screen_Background", Level_02_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_03_Splash_Screen_Background", Level_03_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("gameOverBackground", GameOver_Background);
-	this->data->assets.loadTexture("level_01_Background", Level_01_Grass_Background_FilePath);
-	this->data->assets.loadTexture("level_01_Border", Level_01_Grass_Border_FilePath);
+	//this->data->assets.loadTexture("level_01_Background", Level_01_Grass_Background_FilePath);
 	this->data->assets.loadTexture("snake_Animation", Game_Starting_Splash_Screen_Snake_Animation_FilePath);
 	//this->data->assets.loadTexture("level_01_WallBorder", Level_01_Wall_Border_FilePath);
 	//this->data->assets.loadTexture("level_02_WallBorder", Level_02_Wall_Border_FilePath);

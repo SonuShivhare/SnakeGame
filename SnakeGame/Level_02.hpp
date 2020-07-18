@@ -18,7 +18,8 @@ private:
 	GameDataRef data;
 	Snake snake;
 	Food food;
-	sf::Sprite background;
+	sf::Sprite grassBackground;
+	sf::Sprite StoneBorder;
 	sf::Sprite pauseButton;
 	sf::Clock clk;
 	float timePerFrame;

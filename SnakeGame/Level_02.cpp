@@ -14,14 +14,15 @@ Level_02::~Level_02()
 
 void Level_02::init()
 {
-	background.setTexture(this->data->assets.getTexture("level_background"));
+	grassBackground.setTexture(this->data->assets.getTexture("levels_background"));
+	StoneBorder.setTexture(this->data->assets.getTexture("level_02_Border"));
 	pauseButton.setTexture(this->data->assets.getTexture("levelPauseButton"));
 	pauseButton.setTextureRect(Level_Blue_button);
 	pauseButton.setPosition(0, 0);
 
 	timePerFrame = 0;
 	timer = 0.0f;
-	delay = Snake_Speed;
+	delay = Snake_Speed / 1.2;
 	BounusFoodTimer = Bonus_Food_Duration_Level_01;
 	BounsFoodDelay = Bonus_Food_Generation_Speed + Bonus_Food_Duration_Level_01;
 	isMouseButtonReleased = false;
@@ -62,7 +63,7 @@ void Level_02::update()
 	if (snake.snakeFoodCollision(food.foodPos())) food.foodGen();
 	if (snake.snakeBonusFoodCollision(food.bonusFoodPos())) food.bonusFoodDisappear();
 	if(snake.snakeWallCollision()) this->data->machine.addState(stateRef(new GameOverState(this->data)));
-	if (snake.returnScore() >= 100)
+	if (snake.returnScore() >= Points_To_Enter_Level_03)
 	{
 		this->data->machine.addState(stateRef(new SplashScreen(this->data, 3)));
 	}
@@ -82,9 +83,11 @@ void Level_02::update()
 void Level_02::draw()
 {
 	this->data->window.clear();
-	this->data->window.draw(background);
-	this->data->window.draw(pauseButton);
+	this->data->window.draw(grassBackground);
 	snake.render();
+	this->data->window.draw(StoneBorder);
+	this->data->window.draw(pauseButton);
+	snake.renderScore();
 	food.render();
 	this->data->window.display();
 }

@@ -150,7 +150,7 @@ bool Snake::snakeFoodCollision(sf::Vector2f f)
 		//audio.playEatingSound();
 		this->data->soundEffect.playEatingSound();
 		score += 5;
-		snakeLength++;
+		snakeLength ++;
 		highScore.storePlayerScore(score);
 		return true;
 	}
@@ -163,7 +163,7 @@ bool Snake::snakeBonusFoodCollision(sf::Vector2f f)
 	{
 		//audio.playEatingSound();
 		this->data->soundEffect.playEatingSound();
-		score += 20;
+		score += 25;
 		snakeLength++;
 		highScore.storePlayerScore(score);
 		return true;
@@ -304,8 +304,7 @@ void Snake::renderScore()
 
 void Snake::render()
 {
-	snakeAnimation();
-	scoreText.setString("Score : " + std::to_string(score));
+	snakeAnimation(); 
 	scoreText.setPosition(sf::Vector2f(window_Width / 2, 6));
 	scoreText.setOrigin(sf::Vector2f(scoreText.getGlobalBounds().width / 2, scoreText.getGlobalBounds().height / 2));
 	this->data->window.draw(scoreText);

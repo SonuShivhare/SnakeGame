@@ -10,7 +10,9 @@ const int window_Height = yCount * size;
 
 #define Game_Title "Assets/images/SnakeGameTitle.png"
 #define Snake_Speed 0.1f
-//sf::IntRect game_Title_Partition(sf::IntRect(0, 0, 900, 126));
+
+#define Points_To_Enter_Level_02 100
+#define Points_To_Enter_Level_03 250
 
 #define Main_Manu_Play_Button "Assets/images/StartButton07.png"
 #define Main_Manu_Quit_Button "Assets/images/QuitButton03.png"
@@ -32,9 +34,11 @@ const int window_Height = yCount * size;
 #define Level_Yellow_button sf::IntRect(64, 0, 32, 32)
 
 #define Main_Menu_Background "Assets/images/MainManuBackground01.png"
-#define Level_Common_Background "Assets/images/GrassBackground.png"
+#define Level_Common_Grass_Background "Assets/images/GrassBackground01.png"
 #define Level_01_Grass_Border_FilePath "Assets/images/GrassBorder.png"
-#define Level_01_Grass_Background_FilePath "Assets/images/GrassBackground01.png"
+#define Level_02_Stone_Border_FilePath "Assets/images/StoneBorder.png"
+#define Level_03_Grass_Stone_Border_FilePath "Assets/images/StoneGrassBorder.png"
+//#define Level_01_Grass_Background_FilePath "Assets/images/GrassBackground01.png"
 //#define Level_01_Background_FilePath "Assets/images/Grass09.png"
 //#define Level_02_Background_FilePath "Assets/images/Grass03.png"
 //#define Level_03_Background_FilePath "Assets/images/Grass06.png"
@@ -62,7 +66,7 @@ const int window_Height = yCount * size;
 #define Wall_Hit_Sound_FilePath "Assets/Audio/WallHit.wav"
 #define SnakeBody_hit_Sound_FilePath "Assets/Audio/SnakeHit.wav"
 
-#define Snake_Segment_FilePath "Assets/images/SnakeSpriteSheet03.png"
+#define Snake_Segment_FilePath "Assets/images/SnakeSpriteSheet05.png"
 #define Snake_Body sf::IntRect(0, 0, 32, 32)
 
 #define headUp sf::IntRect(3*32, 0*32, 32, 32)
@@ -81,9 +85,9 @@ const int window_Height = yCount * size;
 #define segmentV sf::IntRect(2*32, 1*32, 32, 32)
 
 #define Bonus_Food_Generation_Speed 13
-#define Bonus_Food_Duration_Level_01 8.0f
+#define Bonus_Food_Duration_Level_01 10.0f
 #define Bonus_Food_Duration_Level_02 8.0f
-#define Bonus_Food_Duration_Level_03 8.0f
+#define Bonus_Food_Duration_Level_03 6.0f
 #define Bonus_Food_Initial_X_Position 55
 #define Bonus_Food_Initial_Y_Position 55
 
