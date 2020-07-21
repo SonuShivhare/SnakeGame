@@ -89,10 +89,10 @@ void Snake::snakeMovementDirection()
 void Snake::snakeMovementDirection_level_01()
 {
 
-	if (s[0].x < 0 - 1) s[0].x = xCount - 1;
-	if (s[0].y < 0 - 1) s[0].y = yCount - 1;
-	if (s[0].x > xCount) s[0].x = 0;
-	if (s[0].y > yCount) s[0].y = 0;
+	if (s[0].x < - 1) s[0].x = xCount ;
+	if (s[0].y < - 1) s[0].y = yCount ;
+	if (s[0].x > xCount) s[0].x = -1;
+	if (s[0].y > yCount) s[0].y = -1;
 
 	for (int i = snakeLength; i > 0; i--)
 	{
