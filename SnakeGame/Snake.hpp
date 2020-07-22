@@ -1,5 +1,8 @@
 #pragma once
-#include "Defs.hpp"
+#include"Defination.hpp"
+#include"Game.hpp"
+//#include"SoundEffect.hpp"
+#include"HighestScore.hpp"
 
 struct SnakeArray
 {
@@ -10,25 +13,30 @@ struct SnakeArray
 class Snake
 {
 public:
-	Snake();
+	Snake(GameDataRef data);
+	Snake(GameDataRef data, int score);
 	~Snake();
-	void snakeMovement(float dt);
-	void scoreFunc(sf::RenderWindow& window);
-	int scoreReturn();
+	void snakeMovementDirection();
 	bool snakeFoodCollision(sf::Vector2f f);
-	void snakeWallCollision(sf::RenderWindow& window, int& gameLevel);
-	void snakeItselfCollision(sf::RenderWindow& window, int& gameLevel);
-	void render(sf::RenderWindow& window);
+	bool snakeBonusFoodCollision(sf::Vector2f f);
+	void snakeMovementDirection_level_01();
+	bool snakeWallCollision();
+	bool snakeItselfCollision();
+	int  returnScore();
+	void snakeAnimation();
+	void renderScore();
+	void render();
 private:
-	sf::Texture snakeBody_t;
+	GameDataRef data;
+	HighestScore highScore;
+	//SoundEffect audio;
 	sf::Sprite snakeBody;
-	int snakeLength;
-	int snakeDirection;
-	SnakeArray s[100];
-
-	//for Score
-	sf::Font font;
 	sf::Text scoreText;
+	SnakeArray s[500];
+	SnakeArray preSegment;
+	SnakeArray postSegment;
+	int snakeLength;
+	int snakeDirection;	
 	int score;
 };
 

@@ -1,64 +1,76 @@
 #include "Game.hpp"
-#include<iostream>
-#include<iomanip>
+#include"SplashScreen.hpp"
 
 Game::Game()
 {
-	window.create(sf::VideoMode(windowWidth, windowHeight), "Snake Game");
-	window.setFramerateLimit(60);
-	background_t.loadFromFile("Assets/images/background.png");
-	background.setTexture(background_t);
-	timer = 0;
-	delay = 0.1;
-	gameLevel = 1;
+	this->data->window.create(sf::VideoMode(window_Width, window_Height), "-Snake Game-");
+	this->data->window.setFramerateLimit(60);
+	loadFiles();
+
+	//switch to starting Splash Screen
+	this->data->machine.addState(stateRef(new SplashScreen(this->data, 0)));
+
+	this->run();
 }
 
 Game::~Game()
 {
 }
 
+void Game::loadFiles()
+{
+	this->data->assets.loadTexture("title", Game_Title);
+	this->data->assets.loadTexture("mainMenuPlayButton", Main_Manu_Play_Button);
+	this->data->assets.loadTexture("mainMenuQuitButton", Main_Manu_Quit_Button); /****/
+	this->data->assets.loadTexture("mainMenuBackground", Main_Menu_Background);
+	this->data->assets.loadTexture("playButton", Play_Button);
+	this->data->assets.loadTexture("homeButton", Home_Button);
+	this->data->assets.loadTexture("quitButton", Quit_Button);
+	this->data->assets.loadTexture("pauseButton", Pause_Button);
+	this->data->assets.loadTexture("levelPauseButton", Level_Pause_Button);
+	this->data->assets.loadTexture("food", Food_FilePath);
+	this->data->assets.loadTexture("bonusFood", Bonus_Food_FilePath);
+	this->data->assets.loadTexture("background", Common_Background);
+	this->data->assets.loadTexture("levels_background", Level_Common_Grass_Background); /****/
+	this->data->assets.loadTexture("level_01_Border", Level_01_Grass_Border_FilePath);
+	this->data->assets.loadTexture("level_02_Border", Level_02_Stone_Border_FilePath);
+	this->data->assets.loadTexture("level_03_Border", Level_03_Grass_Stone_Border_FilePath);
+	this->data->assets.loadTexture("game_Start_Splash_Screen_Background", Game_Starting_Splash_Screen_Background_FilePath);
+	this->data->assets.loadTexture("level_01_Splash_Screen_Background", Level_01_Splash_Screen_Background_FilePath);
+	this->data->assets.loadTexture("level_02_Splash_Screen_Background", Level_02_Splash_Screen_Background_FilePath);
+	this->data->assets.loadTexture("level_03_Splash_Screen_Background", Level_03_Splash_Screen_Background_FilePath);
+	this->data->assets.loadTexture("gameOverBackground", GameOver_Background);
+	//this->data->assets.loadTexture("level_01_Background", Level_01_Grass_Background_FilePath);
+	this->data->assets.loadTexture("snake_Animation", Game_Starting_Splash_Screen_Snake_Animation_FilePath);
+	//this->data->assets.loadTexture("level_01_WallBorder", Level_01_Wall_Border_FilePath);
+	//this->data->assets.loadTexture("level_02_WallBorder", Level_02_Wall_Border_FilePath);
+	//this->data->assets.loadTexture("level_03_WallBorder", Level_03_Wall_Border_FilePath);
+	//this->data->assets.loadTexture("level_01_Background", Level_01_Background_FilePath);
+	//this->data->assets.loadTexture("level_02_Background", Level_02_Background_FilePath);
+	//this->data->assets.loadTexture("level_03_Background", Level_03_Background_FilePath);
+	this->data->assets.loadFont("font", Font_FilePath);
+	this->data->assets.loadFont("arialfont", Arial_Font_FilePath);
+	this->data->assets.loadTexture("snakeBody", Snake_Segment_FilePath);
+}
+
 void Game::run()
 {
-	//Game Loop
-	while (window.isOpen())
+	//Game-Loop
+	while (this->data->window.isOpen())
 	{
-		dt = clk.restart().asSeconds();
-		timer += dt;
-		//inputs
+
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (this->data->window.pollEvent(event))
 		{
-			if (event.type == sf::Event::EventType::Closed) window.close();
+			if (event.type == sf::Event::Closed)
+			{
+				this->data->window.close();
+			}
 		}
 
-		//Swiching Between Game windows
-		if (gameLevel == 1)
-		{
-			startWindow.render(window, gameLevel);
-		}
-		else if (gameLevel == 2)
-		{
-			//updates
-			if (timer > delay) 
-			{ 
-				timer = 0; 
-				snake.snakeMovement(dt);
-			}
-			if (snake.snakeFoodCollision(food.foodPos())) food.foodGen();
-			snake.snakeWallCollision(window, gameLevel);
-			snake.snakeItselfCollision(window, gameLevel);
-		
-			//render
-			window.clear();
-			window.draw(background);
-			food.render(window);
-			snake.render(window);
-			snake.scoreFunc(window);
-			window.display();
-		}
-		else if (gameLevel == 3)
-		{
-			endWindow.render(window, gameLevel, snake.scoreReturn());
-		}
+		this->data->machine.processStateChanges();
+		this->data->machine.getActiveState()->handleInput();
+		this->data->machine.getActiveState()->update();
+		this->data->machine.getActiveState()->draw();
 	}
 }

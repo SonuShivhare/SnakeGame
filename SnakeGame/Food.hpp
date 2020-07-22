@@ -1,7 +1,14 @@
 #pragma once
-#include "Defs.hpp"
+#include"Defination.hpp"
+#include"Game.hpp"
 
 struct foodArray
+{
+	int x;
+	int y;
+};
+
+struct bonusFood
 {
 	int x;
 	int y;
@@ -10,14 +17,20 @@ struct foodArray
 class Food
 {
 public:
-	Food();
+	Food(GameDataRef data);
 	~Food();
-	void foodGen();
+
 	sf::Vector2f foodPos();
-	void render(sf::RenderWindow& window);
+	sf::Vector2f bonusFoodPos();
+	void bonusFoodDisappear();
+	void foodGen();
+	void bonusFoodGen();
+	void render();
 private:
-	sf::Texture food_t;
-	sf::Sprite food;
+	GameDataRef data;
 	foodArray f;
+	bonusFood bf;
+	sf::Sprite food;
+	sf::Sprite bonusFood;
 };
 

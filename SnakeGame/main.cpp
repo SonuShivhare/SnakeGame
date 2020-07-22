@@ -3,9 +3,6 @@
 
 int main()
 {
-	// Check Comment
 	Game game;
-	game.run();
-
 	return 0;
 }

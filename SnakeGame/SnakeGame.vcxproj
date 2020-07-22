@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{1055f6b5-1767-4537-b77e-f1a57b91a91d}</ProjectGuid>
+    <ProjectGuid>{ea188831-7a23-4827-ae97-a2be5d2942a1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SnakeGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -167,21 +167,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Defs.hpp" />
-    <ClInclude Include="EndWindow.hpp" />
+    <ClInclude Include="AssetsManager.hpp" />
+    <ClInclude Include="Level_02.hpp" />
+    <ClInclude Include="Level_03.hpp" />
+    <ClInclude Include="SoundEffect.hpp" />
+    <ClInclude Include="Defination.hpp" />
     <ClInclude Include="Food.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameOverState.hpp" />
+    <ClInclude Include="HighestScore.hpp" />
+    <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="Level_01.hpp" />
+    <ClInclude Include="MainMenuState.hpp" />
+    <ClInclude Include="PauseState.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Snake.hpp" />
-    <ClInclude Include="StartWindow.hpp" />
+    <ClInclude Include="SplashScreen.hpp" />
+    <ClInclude Include="State.hpp" />
+    <ClInclude Include="StateMachine.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EndWindow.cpp" />
+    <ClCompile Include="AssetsManager.cpp" />
+    <ClCompile Include="Level_02.cpp" />
+    <ClCompile Include="Level_03.cpp" />
+    <ClCompile Include="SoundEffect.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
+    <ClCompile Include="HighestScore.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Level_01.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Snake.cpp" />
-    <ClCompile Include="StartWindow.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

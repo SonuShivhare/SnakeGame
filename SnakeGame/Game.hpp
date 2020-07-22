@@ -1,29 +1,31 @@
 #pragma once
-#include "Defs.hpp"
-#include "Snake.hpp"
-#include "Food.hpp"
-#include "StartWindow.hpp"
-#include "EndWindow.hpp"
+#include <memory>
+#include <SFML/Graphics.hpp>
+#include "StateMachine.hpp"
+#include "AssetsManager.hpp"
+#include "InputManager.hpp"
+#include"SoundEffect.hpp"
+
+struct GameData
+{
+	StateMachine machine;
+	sf::RenderWindow window;
+	AssetsManager assets;
+	InputManager input;
+	SoundEffect soundEffect;
+};
+
+typedef std::shared_ptr<GameData> GameDataRef;
 
 class Game
 {
 public:
 	Game();
 	~Game();
-	void run();
+	
 private:
-	sf::RenderWindow window;
-	sf::Texture background_t;
-	sf::Sprite background;
-	sf::Clock clk;
-	float dt;
-	float timer;
-	float delay;
-	Snake snake;
-	Food food;
-
-	StartWindow startWindow;
-	EndWindow endWindow;
-	int gameLevel;
+	GameDataRef data = std::make_shared<GameData>();
+	void loadFiles();
+	void run();
 };
 

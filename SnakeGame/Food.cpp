@@ -1,32 +1,59 @@
 #include "Food.hpp"
 
-Food::Food()
+Food::Food(GameDataRef data) : data(data)
 {
-	food_t.loadFromFile( "Assets/images/red.png" );
-	food.setTexture(food_t);
+	food.setTexture(this->data->assets.getTexture("food"));
+	bonusFood.setTexture(this->data->assets.getTexture("bonusFood"));
+	bf.x = Bonus_Food_Initial_X_Position;
+	bf.y = Bonus_Food_Initial_Y_Position;
+	bonusFood.setPosition(sf::Vector2f(bf.x * size, bf.y * size));
 	srand(time(NULL));
 	foodGen();
+	//bonusFoodGen();
 }
 
 Food::~Food()
 {
 }
 
-//random Genration of food
 void Food::foodGen()
 {
-	f.x = rand() % xCount;
-	f.y = rand() % yCount;
+	f.x = (rand() % (xCount - 2)) + 1;
+	f.y = (rand() % (yCount - 2)) + 1;
+	food.setPosition(sf::Vector2f(f.x * size, f.y * size));
 }
 
-//returns the food position
+void Food::bonusFoodGen()
+{
+	do
+	{
+		bf.x = (rand() % (xCount - 2)) + 1;
+		bf.y = (rand() % (yCount - 2)) + 1;
+	}
+	while (bf.x == f.x && bf.y == f.y);
+
+	bonusFood.setPosition(sf::Vector2f(bf.x * size, bf.y * size));
+}
+
 sf::Vector2f Food::foodPos()
 {
 	return sf::Vector2f(f.x, f.y);
 }
 
-void Food::render(sf::RenderWindow& window)
+sf::Vector2f Food::bonusFoodPos()
 {
-	food.setPosition(sf::Vector2f(f.x * size, f.y * size));
-	window.draw(food);
+	return sf::Vector2f(bf.x, bf.y);
+}
+
+void Food::bonusFoodDisappear()
+{
+	bf.x = Bonus_Food_Initial_X_Position;
+	bf.y = Bonus_Food_Initial_Y_Position;
+	bonusFood.setPosition(sf::Vector2f(bf.x * size, bf.y * size));
+}
+
+void Food::render()
+{	
+	this->data->window.draw(food);
+	this->data->window.draw(bonusFood);
 }
