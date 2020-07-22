@@ -3,6 +3,10 @@
 
 int main()
 {
+	/// <summary>
+	/// sjbdiuhfjajndsd
+	/// </summary>
+	/// <returns></returns>
 	Game game;
 	return 0;
 }
