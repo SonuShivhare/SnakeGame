@@ -7,7 +7,7 @@
 class SplashScreen : public State
 {
 public:
-	SplashScreen(GameDataRef data, int splashScreen, float delay = 3.0f);
+	SplashScreen(GameDataRef data, int splashScreen, float delay = 2.0f);
 	~SplashScreen();
 
 	void GameStart();
