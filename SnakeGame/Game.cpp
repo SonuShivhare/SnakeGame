@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include"SplashScreen.hpp"
+#include "MainMenuState.hpp"
 
 Game::Game()
 {
@@ -8,7 +9,7 @@ Game::Game()
 	loadFiles();
 
 	//switch to starting Splash Screen
-	this->data->machine.addState(stateRef(new SplashScreen(this->data, 0)));
+	this->data->machine.addState(stateRef(new MainMenuState(this->data)));
 
 	this->run();
 }
@@ -21,7 +22,7 @@ void Game::loadFiles()
 {
 	this->data->assets.loadTexture("title", Game_Title);
 	this->data->assets.loadTexture("mainMenuPlayButton", Main_Manu_Play_Button);
-	this->data->assets.loadTexture("mainMenuQuitButton", Main_Manu_Quit_Button); /****/
+	this->data->assets.loadTexture("mainMenuQuitButton", Main_Manu_Quit_Button);
 	this->data->assets.loadTexture("mainMenuBackground", Main_Menu_Background);
 	this->data->assets.loadTexture("playButton", Play_Button);
 	this->data->assets.loadTexture("homeButton", Home_Button);
@@ -31,23 +32,14 @@ void Game::loadFiles()
 	this->data->assets.loadTexture("food", Food_FilePath);
 	this->data->assets.loadTexture("bonusFood", Bonus_Food_FilePath);
 	this->data->assets.loadTexture("background", Common_Background);
-	this->data->assets.loadTexture("levels_background", Level_Common_Grass_Background); /****/
+	this->data->assets.loadTexture("levels_background", Level_Common_Grass_Background);
 	this->data->assets.loadTexture("level_01_Border", Level_01_Grass_Border_FilePath);
 	this->data->assets.loadTexture("level_02_Border", Level_02_Stone_Border_FilePath);
 	this->data->assets.loadTexture("level_03_Border", Level_03_Grass_Stone_Border_FilePath);
-	this->data->assets.loadTexture("game_Start_Splash_Screen_Background", Game_Starting_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_01_Splash_Screen_Background", Level_01_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_02_Splash_Screen_Background", Level_02_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("level_03_Splash_Screen_Background", Level_03_Splash_Screen_Background_FilePath);
 	this->data->assets.loadTexture("gameOverBackground", GameOver_Background);
-	//this->data->assets.loadTexture("level_01_Background", Level_01_Grass_Background_FilePath);
-	this->data->assets.loadTexture("snake_Animation", Game_Starting_Splash_Screen_Snake_Animation_FilePath);
-	//this->data->assets.loadTexture("level_01_WallBorder", Level_01_Wall_Border_FilePath);
-	//this->data->assets.loadTexture("level_02_WallBorder", Level_02_Wall_Border_FilePath);
-	//this->data->assets.loadTexture("level_03_WallBorder", Level_03_Wall_Border_FilePath);
-	//this->data->assets.loadTexture("level_01_Background", Level_01_Background_FilePath);
-	//this->data->assets.loadTexture("level_02_Background", Level_02_Background_FilePath);
-	//this->data->assets.loadTexture("level_03_Background", Level_03_Background_FilePath);
 	this->data->assets.loadFont("font", Font_FilePath);
 	this->data->assets.loadFont("arialfont", Arial_Font_FilePath);
 	this->data->assets.loadTexture("snakeBody", Snake_Segment_FilePath);
