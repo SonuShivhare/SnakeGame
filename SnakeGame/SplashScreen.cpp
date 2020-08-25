@@ -39,21 +39,9 @@ void SplashScreen::level_03()
 
 void SplashScreen::init()
 {
-	gameStartBackground.setTexture(this->data->assets.getTexture("game_Start_Splash_Screen_Background"));
 	level_01_Background.setTexture(this->data->assets.getTexture("level_01_Splash_Screen_Background"));
 	level_02_Background.setTexture(this->data->assets.getTexture("level_02_Splash_Screen_Background"));
 	level_03_Background.setTexture(this->data->assets.getTexture("level_03_Splash_Screen_Background"));
-	snake_Animation.setTexture(this->data->assets.getTexture("snake_Animation"));
-	
-	snake_Animation_Partition = sf::IntRect(0, 0, 701, 185);
-	snakeSlithering = sf::Vector2f(-700, window_Height / 2);
-	snake_Animation.setTextureRect(snake_Animation_Partition);
-	snake_Animation.setOrigin(sf::Vector2f(0, snake_Animation.getGlobalBounds().height / 2));
-	snake_Animation.setPosition(snakeSlithering);
-
-	snakeAnimationSpeed = 0.07f;
-
-	//if(splashScreen != 0) this->data->soundEffect.playLevelUpSound();
 }
 
 void SplashScreen::handleInput()
@@ -64,25 +52,6 @@ void SplashScreen::update()
 {
 	timePerFrame = clk.restart().asSeconds();
 	timer += timePerFrame;
-	timer2 += timePerFrame;
-
-	snakeSlithering.x += 11;
-	snake_Animation.setPosition(snakeSlithering);
-
-	if (timer2 > snakeAnimationSpeed)
-	{
-		timer2 = 0;
-
-		if (snake_Animation_Partition.top != 6290)	snake_Animation_Partition.top += 185;
-		else snake_Animation_Partition.top = 0;
-
-		snake_Animation.setTextureRect(snake_Animation_Partition);
-	}
-
-	if (snakeSlithering.x > 1120 && splashScreen == 0)
-	{
-			this->data->machine.addState(stateRef(new MainMenuState(this->data)));
-	}
 
 	if (timer > delay)
 	{

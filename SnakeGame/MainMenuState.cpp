@@ -12,7 +12,7 @@ MainMenuState::~MainMenuState()
 void MainMenuState::init()
 {
 	title.setTexture(this->data->assets.getTexture("title"));
-	title.setPosition(window_Width / 2, window_Height/4);
+	title.setPosition(window_Width / 2, window_Height/5);
 	title.setOrigin(sf::Vector2f(title.getGlobalBounds().width / 2, title.getGlobalBounds().height / 2));
 
 	playButton.setTexture(this->data->assets.getTexture("mainMenuPlayButton"));

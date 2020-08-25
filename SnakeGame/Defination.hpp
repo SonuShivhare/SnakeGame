@@ -38,8 +38,6 @@ const int window_Height = yCount * size;
 #define Level_01_Grass_Border_FilePath "Assets/images/GrassBorder.png"
 #define Level_02_Stone_Border_FilePath "Assets/images/StoneBorder.png"
 #define Level_03_Grass_Stone_Border_FilePath "Assets/images/StoneGrassBorder.png"
-#define Game_Starting_Splash_Screen_Background_FilePath "Assets/images/Background04.jpg"
-#define Game_Starting_Splash_Screen_Snake_Animation_FilePath "Assets/images/SnakeAnimation.png"
 #define Level_01_Splash_Screen_Background_FilePath "Assets/images/level_01.png"
 #define Level_02_Splash_Screen_Background_FilePath "Assets/images/level_02.png"
 #define Level_03_Splash_Screen_Background_FilePath "Assets/images/level_03.png"
@@ -47,15 +45,13 @@ const int window_Height = yCount * size;
 #define Common_Background "Assets/images/background.png"
 
 #define Food_FilePath "Assets/images/redApple.png"
-#define Bonus_Food_FilePath "Assets/images/BonusFood.png"
+#define Bonus_Food_FilePath "Assets/images/cherry.png"
 
 #define Font_FilePath "Assets/Fonts/a.ttf"
 #define Arial_Font_FilePath "C:/Windows/Fonts/Arial.ttf"
 
 
 #define Eating_Sound_FilePath "Assets/Audio/EatSound.wav"
-#define Turn_Sound_FilePath "Assets/Audio/Turn.wav"
-#define Level_Up_Sound_FilePath "Assets/Audio/LevelUp.wav"
 #define Wall_Hit_Sound_FilePath "Assets/Audio/WallHit.wav"
 #define SnakeBody_hit_Sound_FilePath "Assets/Audio/SnakeHit.wav"
 
