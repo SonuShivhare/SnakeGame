@@ -2,6 +2,7 @@
 #include"Defination.hpp"
 #include"Game.hpp"
 
+
 struct foodArray
 {
 	int x;
