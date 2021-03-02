@@ -1,4 +1,4 @@
-# SnakeGame (SFML)
+# SnakeGame (SFML) X64 Bit
 
 **Snake Game is a simple, endless and 2D video game which takes place in an enclosed area. The Game is consists of three levels, which gets more complex as player proceeds in the game. In Order to cross each level, player has to break certain score limit in every level. As the game is endless, level three is the endless level in the game.**
 
