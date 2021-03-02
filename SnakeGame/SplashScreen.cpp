@@ -83,7 +83,7 @@ void SplashScreen::draw()
 	case 3: level_03();
 		break;
 	default: 
-									std::cout<< "Default Case"<< std::endl;
+		std::cout<< "Default Case"<< std::endl;
 	}
 
 	this->data->window.display();
