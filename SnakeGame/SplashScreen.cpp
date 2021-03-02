@@ -4,6 +4,7 @@
 #include"Level_02.hpp"
 #include"Level_03.hpp"
 
+
 SplashScreen::SplashScreen(GameDataRef data, int splashScreen, float delay) : data(data)
 {
 	this->splashScreen = splashScreen;
@@ -81,6 +82,8 @@ void SplashScreen::draw()
 		break;
 	case 3: level_03();
 		break;
+	default: 
+		std::cout<< "Default Case"<< std::endl;
 	}
 
 	this->data->window.display();
